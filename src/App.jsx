@@ -8,7 +8,7 @@ import './assets/styles/app.scss';
 function App() {
 
   return (
-      <BrowserRouter>
+      <BrowserRouter basename="/wealthHealth">
           <Routes>
               <Route path="*" element={<Page404 />} />
               <Route path="/" element={<CreateEmployee />} />

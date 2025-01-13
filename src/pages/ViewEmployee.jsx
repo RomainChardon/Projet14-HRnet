@@ -2,9 +2,12 @@ import {Link} from "react-router-dom";
 import TableCurrentEmployees from "../components/TableCurrentEmployees.jsx";
 import {addData} from "../redux/employeesSlice.jsx";
 import {useDispatch} from "react-redux";
-import {useState} from "react";
+import React, {useState} from "react";
+import {Modal} from "simpletext-modal-react";
 
 function ViewEmployee() {
+    const [show, setShow] = useState(false);
+    const [message, setMessage] = useState("");
     const dispatch = useDispatch();
     const handleClick = (e) => {
         e.preventDefault()
@@ -21,6 +24,8 @@ function ViewEmployee() {
         };
 
         dispatch(addData(employee));
+        setShow(true);
+        setMessage("Employee created successfully !");
 
     }
 
@@ -32,6 +37,11 @@ function ViewEmployee() {
             <Link to="/">
                 Home
             </Link>
+            <Modal
+                show={show}
+                close={() => setShow(false)}
+                message={message}
+            />
         </div>
     )
 }

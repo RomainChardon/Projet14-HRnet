@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {addData} from "../redux/employeesSlice.jsx";
 
 
-function Form() {
+function Form({setShowModal, setMessage}) {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         firstname: '',
@@ -41,7 +41,10 @@ function Form() {
             zip: '',
             department: '',
         });
-        console.log('form : ', formData)
+
+        setShowModal(true);
+        setMessage("Employee created successfully !");
+        // TODO: activation modal
     }
 
     // TODO : import date picker
@@ -58,10 +61,10 @@ function Form() {
                 <input type="text" id="last-name" name="lastname" value={formData.lastname} onChange={handleChange}/>
 
                 <label htmlFor="date-of-birth">Date of Birth</label>
-                <input type="text" id="date-of-birth" name="birth" value={formData.birth} onChange={handleChange}/>
+                <input type="date" id="date-of-birth" name="birth" value={formData.birth} onChange={handleChange}/>
 
                 <label htmlFor="start-date">Start Date</label>
-                <input type="text" id="start-date" name="start-date" value={formData.startdate} onChange={handleChange}/>
+                <input type="date" id="start-date" name="start-date" value={formData.startdate} onChange={handleChange}/>
 
                 <fieldset className="address">
                     <legend>Address</legend>
