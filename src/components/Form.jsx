@@ -1,17 +1,23 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import StateOption from "./StateOption.jsx";
 import stateJson from "/src/assets/json/state.json"
 import {useDispatch} from "react-redux";
 import {addData} from "../redux/employeesSlice.jsx";
 
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 
 function Form({setShowModal, setMessage}) {
     const dispatch = useDispatch();
+    const [startDate, setStartDate] = useState();
+    const [birthDate, setBirthDate] = useState();
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
         birth: '',
-        startdate: '',
+        start: '',
         street: '',
         city: '',
         state: '',
@@ -21,9 +27,26 @@ function Form({setShowModal, setMessage}) {
 
     const handleChange = (e) => {
         const {name, value} = e.target;
+        console.log(name);
         setFormData((data) => ({
             ...data,
             [name]: value,
+        }))
+    }
+
+    const handleChangeStartDate = (e) => {
+        setStartDate(e)
+        setFormData((data) => ({
+            ...data,
+            ["start"]: startDate,
+        }))
+    }
+
+    const handleChangeBirthDate = (e) => {
+        setBirthDate(e)
+        setFormData((data) => ({
+            ...data,
+            ["birth"]: birthDate,
         }))
     }
 
@@ -34,7 +57,7 @@ function Form({setShowModal, setMessage}) {
             firstname: '',
             lastname: '',
             birth: '',
-            startdate: '',
+            start: '',
             street: '',
             city: '',
             state: '',
@@ -44,7 +67,6 @@ function Form({setShowModal, setMessage}) {
 
         setShowModal(true);
         setMessage("Employee created successfully !");
-        // TODO: activation modal
     }
 
     // TODO : import date picker
@@ -61,10 +83,12 @@ function Form({setShowModal, setMessage}) {
                 <input type="text" id="last-name" name="lastname" value={formData.lastname} onChange={handleChange}/>
 
                 <label htmlFor="date-of-birth">Date of Birth</label>
-                <input type="date" id="date-of-birth" name="birth" value={formData.birth} onChange={handleChange}/>
+                <DatePicker showIcon dateFormat='dd/MM/yyyy' placeholderText=" jj / mm / aaaa" selected={birthDate} onChange={handleChangeBirthDate} />
+                {/*<input type="date" id="date-of-birth" name="birth" value={formData.birth} onChange={handleChange}/>*/}
 
                 <label htmlFor="start-date">Start Date</label>
-                <input type="date" id="start-date" name="start-date" value={formData.startdate} onChange={handleChange}/>
+                <DatePicker showIcon dateFormat='dd/MM/yyyy' placeholderText=" jj / mm / aaaa" selected={startDate} onChange={handleChangeStartDate} />
+                {/*<input type="date" id="start-date" name="start" value={formData.startdate} onChange={handleChange}/>*/}
 
                 <fieldset className="address">
                     <legend>Address</legend>
