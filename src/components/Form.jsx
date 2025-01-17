@@ -27,7 +27,6 @@ function Form({setShowModal, setMessage}) {
 
     const handleChange = (e) => {
         const {name, value} = e.target;
-        console.log(name);
         setFormData((data) => ({
             ...data,
             [name]: value,
@@ -36,17 +35,23 @@ function Form({setShowModal, setMessage}) {
 
     const handleChangeStartDate = (e) => {
         setStartDate(e)
+        const str = e.toLocaleDateString(
+            "en-GB"
+        )
         setFormData((data) => ({
             ...data,
-            ["start"]: startDate,
+            ["start"]: str,
         }))
     }
 
     const handleChangeBirthDate = (e) => {
         setBirthDate(e)
+        const str = e.toLocaleDateString(
+            "en-GB"
+        )
         setFormData((data) => ({
             ...data,
-            ["birth"]: birthDate,
+            ["birth"]: str,
         }))
     }
 

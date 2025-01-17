@@ -11,7 +11,7 @@ function CreateEmployee() {
     return (
         <div>
             <div className="title">
-                <h1>HRnet</h1>
+                <h1>WealthHealth</h1>
             </div>
             <div className="container">
                 <Link to="/employee-list">

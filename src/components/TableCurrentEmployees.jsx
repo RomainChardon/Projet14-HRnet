@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 
 function TableCurrentEmployees() {
     const {data} = useSelector((state) => state.employees)
+    console.log(data);
     // TODO : Import datatables
     return (
         <div>
@@ -25,7 +26,7 @@ function TableCurrentEmployees() {
                         <tr>
                             <td>{e.firstname}</td>
                             <td>{e.lastname}</td>
-                            <td>{e.startdate}</td>
+                            <td>{e.start}</td>
                             <td>{e.department}</td>
                             <td>{e.birth}</td>
                             <td>{e.street}</td>
