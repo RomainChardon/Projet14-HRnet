@@ -88,12 +88,22 @@ function Form({setShowModal, setMessage}) {
                 <input type="text" id="last-name" name="lastname" value={formData.lastname} onChange={handleChange}/>
 
                 <label htmlFor="date-of-birth">Date of Birth</label>
-                <DatePicker showIcon dateFormat='dd/MM/yyyy' placeholderText=" jj / mm / aaaa" selected={birthDate} onChange={handleChangeBirthDate} />
-                {/*<input type="date" id="date-of-birth" name="birth" value={formData.birth} onChange={handleChange}/>*/}
+                <DatePicker
+                    showIcon
+                    dateFormat='dd/MM/yyyy'
+                    placeholderText=" jj / mm / aaaa"
+                    selected={birthDate}
+                    onChange={handleChangeBirthDate}
+                />
 
                 <label htmlFor="start-date">Start Date</label>
-                <DatePicker showIcon dateFormat='dd/MM/yyyy' placeholderText=" jj / mm / aaaa" selected={startDate} onChange={handleChangeStartDate} />
-                {/*<input type="date" id="start-date" name="start" value={formData.startdate} onChange={handleChange}/>*/}
+                <DatePicker
+                    showIcon
+                    dateFormat='dd/MM/yyyy'
+                    placeholderText=" jj / mm / aaaa"
+                    selected={startDate}
+                    onChange={handleChangeStartDate}
+                />
 
                 <fieldset className="address">
                     <legend>Address</legend>

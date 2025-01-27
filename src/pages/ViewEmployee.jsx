@@ -15,7 +15,7 @@ function ViewEmployee() {
             firstname: 'romain',
             lastname: 'chardon',
             birth: '26/11/2001',
-            startdate: '16/12/2024',
+            start: '16/12/2024',
             street: 'street',
             city: 'city',
             state: 'Alabama',
