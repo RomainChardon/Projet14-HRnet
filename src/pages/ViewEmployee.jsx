@@ -30,9 +30,12 @@ function ViewEmployee() {
     }
 
     return (
-        <div>
+        <div className="container">
+            <div className="title">
+                <h1>Current Employees</h1>
+            </div>
             <button onClick={handleClick}>add employee</button>
-            <h1>Current Employees</h1>
+
             <TableCurrentEmployees/>
             <Link to="/">
                 Home

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import StateOption from "./StateOption.jsx";
-import stateJson from "/src/assets/json/state.json"
+import stateJson from "/src/assets/json/state.json";
 import {useDispatch} from "react-redux";
 import {addData} from "../redux/employeesSlice.jsx";
 
@@ -74,67 +74,96 @@ function Form({setShowModal, setMessage}) {
         setMessage("Employee created successfully !");
     }
 
-    // TODO : import date picker
     // TODO: import selectmenu
     return (
-        <div>
-            <h2>Create Employee</h2>
+        <div className="form-container">
+            <h2 className="form-title">Create Employee</h2>
 
             <form onSubmit={handleSubmit} id="create-employee">
-                <label htmlFor="first-name">First name</label>
-                <input type="text" id="first-name" name="firstname" value={formData.firstname} onChange={handleChange}/>
+                <div className="form-group">
+                    <p className="label-form-group">Identity</p>
+                    <div className="form-group-col">
+                        <div>
+                            <label htmlFor="first-name">First name</label>
+                            <input type="text" id="first-name" name="firstname" value={formData.firstname}
+                                   onChange={handleChange} placeholder="John"/>
+                        </div>
+                        <div>
+                            <label htmlFor="date-of-birth">Date of Birth</label>
+                            <DatePicker
+                                showIcon
+                                dateFormat='dd/MM/yyyy'
+                                placeholderText=" jj / mm / aaaa"
+                                selected={birthDate}
+                                onChange={handleChangeBirthDate}
+                            />
+                        </div>
+                    </div>
+                    <div className="form-group-col">
+                        <div>
+                            <label htmlFor="last-name">Last name</label>
+                            <input type="text" id="last-name" name="lastname" value={formData.lastname}
+                                   onChange={handleChange} placeholder="Doe"/>
+                        </div>
+                        <div>
+                            <label htmlFor="start-date">Start Date</label>
+                            <DatePicker
+                                showIcon
+                                dateFormat='dd/MM/yyyy'
+                                placeholderText=" jj / mm / aaaa"
+                                selected={startDate}
+                                onChange={handleChangeStartDate}
+                            />
+                        </div>
+                    </div>
+                </div>
 
-                <label htmlFor="last-name">Last name</label>
-                <input type="text" id="last-name" name="lastname" value={formData.lastname} onChange={handleChange}/>
+                <div className="form-group">
+                    <p className="label-form-group">Address</p>
+                    <div className="form-group-col">
+                        <div>
+                            <label htmlFor="street">Street</label>
+                            <input id="street" type="text" name="street" value={formData.street}
+                                   onChange={handleChange}/>
+                        </div>
+                        <div>
+                            <label htmlFor="state">State</label>
+                            <select name="state" id="state" value={formData.state} onChange={handleChange}>
+                                {stateJson.map((value) => (
+                                    <StateOption key={value.name} value={value}/>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group-col">
+                        <div>
+                            <label htmlFor="city">City</label>
+                            <input id="city" type="text" name="city" value={formData.city} onChange={handleChange}/>
+                        </div>
+                        <div>
+                            <label htmlFor="zip-code">Zip Code</label>
+                            <input id="zip-code" type="number" name="zip" value={formData.zip} onChange={handleChange}/>
+                        </div>
+                    </div>
+                </div>
 
-                <label htmlFor="date-of-birth">Date of Birth</label>
-                <DatePicker
-                    showIcon
-                    dateFormat='dd/MM/yyyy'
-                    placeholderText=" jj / mm / aaaa"
-                    selected={birthDate}
-                    onChange={handleChangeBirthDate}
-                />
+                <div className="form-group">
+                    <p className="label-form-group">Department</p>
+                    <div>
+                        <label htmlFor="department">Department</label>
+                        <select name="department" id="department" value={formData.department} onChange={handleChange}>
+                            <option>Sales</option>
+                            <option>Marketing</option>
+                            <option>Engineering</option>
+                            <option>Human Resources</option>
+                            <option>Legal</option>
+                        </select>
+                    </div>
+                </div>
 
-                <label htmlFor="start-date">Start Date</label>
-                <DatePicker
-                    showIcon
-                    dateFormat='dd/MM/yyyy'
-                    placeholderText=" jj / mm / aaaa"
-                    selected={startDate}
-                    onChange={handleChangeStartDate}
-                />
-
-                <fieldset className="address">
-                    <legend>Address</legend>
-
-                    <label htmlFor="street">Street</label>
-                    <input id="street" type="text" name="street" value={formData.street} onChange={handleChange}/>
-
-                    <label htmlFor="city">City</label>
-                    <input id="city" type="text" name="city" value={formData.city} onChange={handleChange}/>
-
-                    <label htmlFor="state">State</label>
-                    <select name="state" id="state" value={formData.state} onChange={handleChange}>
-                        {stateJson.map((value) => (
-                            <StateOption key={value.name} value={value}/>
-                        ))}
-                    </select>
-
-                    <label htmlFor="zip-code">Zip Code</label>
-                    <input id="zip-code" type="number" name="zip" value={formData.zip} onChange={handleChange}/>
-                </fieldset>
-
-                <label htmlFor="department">Department</label>
-                <select name="department" id="department" value={formData.department} onChange={handleChange}>
-                    <option>Sales</option>
-                    <option>Marketing</option>
-                    <option>Engineering</option>
-                    <option>Human Resources</option>
-                    <option>Legal</option>
-                </select>
-
-                <button type="submit">Save</button>
+                <div className="form-submit">
+                    <button type="submit">Save</button>
+                </div>
             </form>
         </div>
     )

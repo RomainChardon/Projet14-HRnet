@@ -21,7 +21,6 @@ function TableCurrentEmployees() {
         { data: 'zip' },
     ];
 
-    // TODO : Import datatables
     return (
         <DataTable
             className="display"
