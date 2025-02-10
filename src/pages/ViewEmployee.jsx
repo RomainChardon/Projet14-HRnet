@@ -4,6 +4,7 @@ import {addData} from "../redux/employeesSlice.jsx";
 import {useDispatch} from "react-redux";
 import React, {useState} from "react";
 import {Modal} from "simpletext-modal-react";
+import Form from "../components/Form.jsx";
 
 function ViewEmployee() {
     const [show, setShow] = useState(false);
@@ -30,23 +31,30 @@ function ViewEmployee() {
     }
 
     return (
-        <div className="container">
-            <div className="title">
-                <h1>Current Employees</h1>
+        <div>
+            <div className="link-bar">
+                <Link to="/">
+                    Home
+                </Link>
             </div>
-            <button onClick={handleClick}>add employee</button>
+            <div className="container">
+                <div className="title">
+                    <h1>Current Employees</h1>
+                    <button onClick={handleClick}>add an employee quickly</button>
 
-            <TableCurrentEmployees/>
-            <Link to="/">
-                Home
-            </Link>
-            <Modal
-                show={show}
-                close={() => setShow(false)}
-                message={message}
-            />
+                </div>
+                <div className="content">
+                    <TableCurrentEmployees/>
+                </div>
+
+                <Modal
+                    show={show}
+                    close={() => setShow(false)}
+                    message={message}
+                />
+            </div>
         </div>
-    )
+)
 }
 
 export default ViewEmployee;

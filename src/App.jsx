@@ -1,9 +1,10 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import CreateEmployee from "./pages/CreateEmployee.jsx";
 import ViewEmployee from "./pages/ViewEmployee.jsx";
 import Page404 from "./pages/error/Page404.jsx";
 
 import './assets/styles/app.scss';
+import React from "react";
 
 function App() {
 
